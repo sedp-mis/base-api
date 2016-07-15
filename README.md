@@ -53,3 +53,7 @@ GET api/v1/posts?relations[]=comments&rels_attrs[comments][]=id&rels_attrs[comme
 ```
 GET api/v1/posts/1129?relations[]=comments&rels_attrs[comments][]=id&rels_attrs[comments][]=text
 ```
+
+### `@index`
+For list of resources, it is handy to have it paginated:
+__TODO__
