@@ -39,6 +39,110 @@
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>Clone repository and run <code>composer install</code>.</p>
+
+<h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>The purpose of this repository is to create an abstraction for common use-cases of api resources. 
+It is a good practice to version our api so we will set our base api to <code>api/v1</code>. 
+So in the following api implementations, the example resource to be used is <code>posts</code>.</p>
+
+<h2>
+<a id="implementation" class="anchor" href="#implementation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Implementation</h2>
+
+<table>
+<thead>
+<tr>
+<th>METHOD</th>
+<th>URL</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>api/v1/posts</code></td>
+<td>
+<code>@index</code>, List of resources</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>api/v1/posts</code></td>
+<td>
+<code>@store</code>, Create or store new resource</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>api/v1/posts/{id}</code></td>
+<td>
+<code>@show</code>, Show resource</td>
+</tr>
+<tr>
+<td><code>PUT|PATCH</code></td>
+<td><code>api/v1/posts/{id}</code></td>
+<td>
+<code>@update</code>, Update resource</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>api/v1/posts/{id}</code></td>
+<td>
+<code>@destroy</code>, Destroy or delete resource</td>
+</tr>
+</tbody>
+</table>
+
+<p>Notice that <code>@&lt;method&gt;</code> are the same with the controller methods in laravel.</p>
+
+<h2>
+<a id="advance-implementation-for-get-methods-like-index-and-show" class="anchor" href="#advance-implementation-for-get-methods-like-index-and-show" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advance Implementation for <code>GET</code> methods like <code>@index</code> and <code>@show</code>.</h2>
+
+<h3>
+<a id="index-and-show" class="anchor" href="#index-and-show" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>@index</code> and <code>@show</code>
+</h3>
+
+<ul>
+<li>
+<p>Resource can be fetched with selective or specific fields or attributes by using query parameter <code>attributes[]</code>. Example:</p>
+
+<pre><code>GET api/v1/posts?attributes[]=id&amp;attributes[]=title
+</code></pre>
+
+<p>... or ...</p>
+
+<pre><code>GET api/v1/posts/1129?attributes[]=id&amp;attributes[]=title
+</code></pre>
+</li>
+<li>
+<p>Resource can be fetched with eager loaded relations by using query parameter <code>relations[]</code>. Example:</p>
+
+<pre><code>GET api/v1/posts?relations[]=comments&amp;relations[]=labels
+</code></pre>
+
+<p>... or ...</p>
+
+<pre><code>GET api/v1/posts/1129?relations[]=comments&amp;relations[]=labels
+</code></pre>
+</li>
+<li>
+<p>Fetched eager loaded relations can also have selective or specific attributes by using query parameter <code>rels_attrs[&lt;relation&gt;][]</code>. Example:</p>
+
+<pre><code>GET api/v1/posts?relations[]=comments&amp;rels_attrs[comments][]=id&amp;rels_attrs[comments][]=text
+</code></pre>
+
+<p>... or ...</p>
+
+<pre><code>GET api/v1/posts/1129?relations[]=comments&amp;rels_attrs[comments][]=id&amp;rels_attrs[comments][]=text
+</code></pre>
+</li>
+</ul>
+
+<h3>
+<a id="index" class="anchor" href="#index" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>@index</code>
+</h3>
+
+<p>For list of resources, it is handy to have it paginated:
+<strong>TODO</strong></p>
       </section>
     </div>
 
