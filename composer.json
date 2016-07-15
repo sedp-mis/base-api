@@ -1,0 +1,33 @@
+{
+    "name": "sedp-mis/base-api",
+    "description": "Abstraction for api resources in laravel",
+    "keywords": ["api", "base-api", "laravel-api", "api resources"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arjon Jason Castro",
+            "email": "ajcastro29@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "laravel/framework": "4.2.11",
+        "sedp-mis/lib": "dev-master",
+        "sedp-mis/base-repository": "dev-master"
+    },
+    "require-dev": {
+        "mockery/mockery": "~0.9",
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SedpMis\\BaseApi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "test_classes/"
+        ]
+    },
+    "minimum-stability": "stable"
+}
