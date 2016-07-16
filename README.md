@@ -28,32 +28,44 @@ Notice that `@<method>` are the same with the controller methods in laravel.
 ### `@index` and `@show`
 
 * Resource can be fetched with selective or specific fields or attributes by using query parameter `attributes[]`. Example:
-  ```
-  GET api/v1/posts?attributes[]=id&attributes[]=title
-  ```
-  ... or ...
-  ```
-  GET api/v1/posts/1129?attributes[]=id&attributes[]=title
-  ```
+ ```
+ GET api/v1/posts?attributes[]=id&attributes[]=title
+ ```
+ ... or ...
+ ```
+ GET api/v1/posts/1129?attributes[]=id&attributes[]=title
+ ```
 
 * Resource can be fetched with eager loaded relations by using query parameter `relations[]`. Example:
-  ```
-  GET api/v1/posts?relations[]=comments&relations[]=labels
-  ```
-  ... or ...
-  ```
-  GET api/v1/posts/1129?relations[]=comments&relations[]=labels
-  ```
+ ```
+ GET api/v1/posts?relations[]=comments&relations[]=labels
+ ```
+ ... or ...
+ ```
+ GET api/v1/posts/1129?relations[]=comments&relations[]=labels
+ ```
 
 * Fetched eager loaded relations can also have selective or specific attributes by using query parameter `rels_attrs[<relation>][]`. Example:
-  ```
-  GET api/v1/posts?relations[]=comments&rels_attrs[comments][]=id&rels_attrs[comments][]=text
-  ```
-  ... or ...
-  ```
-  GET api/v1/posts/1129?relations[]=comments&rels_attrs[comments][]=id&rels_attrs[comments][]=text
-  ```
+ ```
+ GET api/v1/posts?relations[]=comments&rels_attrs[comments][]=id&rels_attrs[comments][]=text
+ ```
+ ... or ...
+ ```
+ GET api/v1/posts/1129?relations[]=comments&rels_attrs[comments][]=id&rels_attrs[comments][]=text
+ ```
 
-### `@index`
-For list of resources, it is handy to have it paginated:
-__TODO__
+### `@index` (proposal only)
+* For list of resources, it is recommended to have it paginated:
+ ```
+ GET api/v1/posts?page=1&rows=100
+ ```
+ This example shows that it is currently on the 1st page and showing 100 number of rows. Without `page` parameter, the list will default to all resources to be fetched.
+
+ You may pass a `wrapper` parameter to wrap the list data within an object with pagination data. Example:
+ ```
+ GET api/v1/posts?page=1&rows=100&wrapper=jqgrid
+ ```
+* It is also handy to filter list by its attributes using `attrs_filters[attribute][]` parameter. Example:
+ ```
+ GET api/v1/posts?attrs_filters[tag][]=cool&attrs_filters[tag][]=trending
+ ```
