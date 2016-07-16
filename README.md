@@ -65,6 +65,7 @@ Notice that `@<method>` are the same with the controller methods in laravel.
  ```
  GET api/v1/posts?page=1&rows=100&wrapper=jqgrid
  ```
+ 
 * It is also handy to filter list by its attributes using `attrs_filters[attribute][]` parameter. Example:
  ```
  GET api/v1/posts?attrs_filters[tag][]=cool&attrs_filters[tag][]=trending
