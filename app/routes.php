@@ -16,4 +16,4 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::resource('posts', 'PostController');
+Route::resource('api/v1/posts', 'PostController');
