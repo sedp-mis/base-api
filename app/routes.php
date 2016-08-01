@@ -11,9 +11,14 @@
 |
 */
 
+
 Route::get('/', function()
 {
 	return View::make('hello');
 });
 
 Route::resource('api/v1/posts', 'PostController');
+
+Event::listen('illuminate.query', function ($sql) {
+    // var_dump($sql);
+});
