@@ -765,12 +765,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sedp-mis/base-repository.git",
-                "reference": "e23be670ee4ddccfdc141e78f5090446fd4aabea"
+                "reference": "385697454cc6988b7fc859a2e8132c06e2e3142e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sedp-mis/base-repository/zipball/e23be670ee4ddccfdc141e78f5090446fd4aabea",
-                "reference": "e23be670ee4ddccfdc141e78f5090446fd4aabea",
+                "url": "https://api.github.com/repos/sedp-mis/base-repository/zipball/385697454cc6988b7fc859a2e8132c06e2e3142e",
+                "reference": "385697454cc6988b7fc859a2e8132c06e2e3142e",
                 "shasum": ""
             },
             "require": {
@@ -804,7 +804,7 @@
                 "model repository",
                 "repository"
             ],
-            "time": "2016-08-22 01:48:05"
+            "time": "2016-08-22 13:56:23"
         },
         {
             "name": "sedp-mis/lib",
