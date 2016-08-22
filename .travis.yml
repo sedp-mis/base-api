@@ -12,7 +12,7 @@ services:
 
 before_script: 
   - composer install
-  - mysql -e "create database `base_api_test_db`;"
+  - mysql -e "create database base_api_test_db;"
   - mysql -u root -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret'; GRANT ALL PRIVILEGES ON * . * TO 'homestead'@'localhost'; FLUSH PRIVILEGES;"
   - php artisan migrate
   
