@@ -17,7 +17,6 @@ class BaseApiControllerTest extends TestCase
 
     public function seedDummyPosts()
     {
-
         foreach (range(1, 3) as $index) {
             Post::create([
                 'title' => $this->fake->text

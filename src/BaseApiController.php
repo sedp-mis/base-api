@@ -15,21 +15,20 @@ class BaseApiController extends \Illuminate\Routing\Controller
 
     public function index()
     {
-        $attributes = Input::get("attributes");
+        $pagelo = new PageLimitOffset(Input::get('per_page'), Input::get('page'));
 
-        $attributes = !empty($attributes) ? $attributes : ['*'];
-
-
-        $relations = Input::get("relations");
-
-        $relations = !empty($relations) ? $relations : [];
-
-        return $this->repo->with($relations)->fetch($attributes);
+        return $this->repo->with(Input::get('relations', []))->fetch(
+            Input::get('attributes', ['*']),
+            Input::get('filters', []),
+            Input::get('sort', []),
+            $pagelo->limit(),
+            $pagelo->offset()
+        );
     }
 
     public function show($id)
     {
-        return $this->repo->find($id);
+        return $this->repo->with(Input::get('relations', []))->findOrFail($id, Input::get('attributes', ['*']));
     }
 
     public function store()
