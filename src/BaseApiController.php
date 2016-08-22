@@ -3,6 +3,7 @@
 namespace SedpMis\BaseApi;
 
 use SedpMis\Lib\IlluminateExtensions\Input;
+use Illuminate\Http\Response;
 
 class BaseApiController extends \Illuminate\Routing\Controller
 {
@@ -33,17 +34,19 @@ class BaseApiController extends \Illuminate\Routing\Controller
 
     public function store()
     {
-        return $this->repo->create();
+        return new Response($this->repo->create(Input::all()), 201);
     }
 
     public function update($id)
     {
-        return $this->repo->update($id);
+        return new Response($this->repo->update(Input::all(), $id), 202);
     }
 
     public function destroy($id)
     {
-        return $this->repo->delete($id);
+        $this->repo->delete($id);
+
+        return new Response('Successfully Deleted!', 202);
     }
 
 }
