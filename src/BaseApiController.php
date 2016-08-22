@@ -48,5 +48,4 @@ class BaseApiController extends \Illuminate\Routing\Controller
 
         return new Response('Successfully Deleted!', 202);
     }
-
 }
