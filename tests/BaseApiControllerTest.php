@@ -2,8 +2,28 @@
 
 class BaseApiControllerTest extends TestCase
 {
+    public function setUp()
+    {
+        parent::setUp();
+
+        Artisan::call('migrate:refresh', ['--seed']);
+    }
+
+    public function seedDummyPosts()
+    {
+        $fake = \Faker\Factory::create();
+
+        foreach (range(1, 3) as $index) {
+            Post::create([
+                'title' => $fake->text
+            ]);
+        }
+    }
+
     public function testIndex()
     {
+        $this->seedDummyPosts();
+
         $crawler = $this->client->request('GET', '/api/v1/posts');
 
         $this->assertTrue($this->client->getResponse()->isOk());
@@ -12,6 +32,8 @@ class BaseApiControllerTest extends TestCase
 
     public function testIndexWithAttributes()
     {
+        $this->seedDummyPosts();
+
         $crawler = $this->client->request('GET', '/api/v1/posts?attributes[]=id&attributes[]=title');
 
         $this->assertTrue($this->client->getResponse()->isOk());
@@ -25,7 +47,9 @@ class BaseApiControllerTest extends TestCase
 
     public function testIndexWithASingleRelations()
     {
-        $crawler = $this->client->request('GET', '/api/v1/posts?relations[comment][attributes][]=id&relations[comment][attributes][]=text');
+        $this->seedDummyPosts();
+
+        $crawler = $this->client->request('GET', '/api/v1/posts?relations[comments][attributes][]=id&relations[comments][attributes][]=text');
         $this->assertTrue($this->client->getResponse()->isOk());
         $json = json_decode($this->client->getResponse()->getContent(), true);
     }
