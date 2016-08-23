@@ -77,7 +77,7 @@ class BaseApiControllerTest extends TestCase
         ]);
 
         $res = $this->call('PATCH', '/api/v1/posts/'.$post->id, ['title' => 'A New Title']);
-        $this->assertEquals(Response::HTTP_ACCEPTED, $res->getStatusCode());
+        $this->assertEquals(Response::HTTP_NO_CONTENT, $res->getStatusCode());
 
         $updatedPost = Post::findOrFail($post->id);
 
@@ -93,7 +93,7 @@ class BaseApiControllerTest extends TestCase
 
         $res = $this->call('DELETE', '/api/v1/posts/'.$post->id);
 
-        $this->assertEquals(Response::HTTP_ACCEPTED, $res->getStatusCode());
-        $this->assertEquals('Successfully Deleted!', $res->getContent());
+        $this->assertEquals(Response::HTTP_NO_CONTENT, $res->getStatusCode());
+        $this->assertNull(Post::find($post->id));
     }
 }

@@ -38,13 +38,14 @@ class BaseApiController extends \Illuminate\Routing\Controller
 
     public function update($id)
     {
-        return new Response($this->repo->update(Input::all(), $id), 202);
+        $this->repo->update(Input::all(), $id);
+        return new Response('', 204);
     }
 
     public function destroy($id)
     {
         $this->repo->delete($id);
 
-        return new Response('Successfully Deleted!', 202);
+        return new Response('', 204);
     }
 }
