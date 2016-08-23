@@ -44,7 +44,7 @@ class BaseApiController extends \Illuminate\Routing\Controller
 
     public function destroy($id)
     {
-        $this->repo->delete($id);
+        $this->repo->delete($this->repo->findOrFail($id));
 
         return new Response('', 204);
     }
