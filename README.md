@@ -54,12 +54,13 @@ Notice that `@<method>` are the same with the controller methods in laravel.
  GET api/v1/posts/1129?relations[]=comments&rels_attrs[comments][]=id&rels_attrs[comments][]=text
  ```
 
-### `@index` (proposal only)
+### `@index`
 * For list of resources, it is recommended to have it paginated:
  ```
- GET api/v1/posts?page=1&rows=100
+ GET api/v1/posts?page=1&per_page=100
  ```
- This example shows that it is currently on the 1st page and showing 100 number of rows. Without `page` parameter, the list will default to all resources to be fetched.
+ This example shows that it is currently on the 1st page and showing 100 records per page. 
+ Without `page` parameter, the list will default to all resources to be fetched.
 
  You may pass a `wrapper` parameter to wrap the list data within an object with pagination data. Example:
  ```
@@ -70,3 +71,9 @@ Notice that `@<method>` are the same with the controller methods in laravel.
  ```
  GET api/v1/posts?filters[tag][]=cool&filters[tag][]=trending
  ```
+ 
+* It is also possible to search by passing `search` query parameter.
+```
+GET api/v1/posts?search[text]=SomeTextToSearch&search[compare][]=title&search[compare][]=description
+
+```
