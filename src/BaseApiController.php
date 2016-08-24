@@ -17,13 +17,18 @@ class BaseApiController extends \Illuminate\Routing\Controller
     {
         $pagelo = new PageLimitOffset(Input::get('per_page'), Input::get('page'));
 
-        return $this->repo->with(Input::get('relations', []))->fetch(
-            Input::get('attributes', ['*']),
-            Input::get('filters', []),
-            Input::get('sort', []),
-            $pagelo->limit(),
-            $pagelo->offset()
-        );
+        $this->repo->with(Input::get('relations', []))
+            ->attributes(Input::get('attributes', ['*']))
+            ->filters(Input::get('filters', []))
+            ->sort(Input::get('sort', []))
+            ->limit($pagelo->limit())
+            ->offset($pagelo->offset());
+
+        if (Input::has('search') && array_key_exists('text', $search = Input::get('search'))) {
+            return $this->repo->search($search['text'], array_key_exists('compare', $search) ? $search['compare'] : null);
+        }
+
+        return $this->repo->get();
     }
 
     public function show($id)
