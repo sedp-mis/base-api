@@ -68,7 +68,6 @@ Notice that `@<method>` are the same with the controller methods in laravel.
  ```
 
 * It is also possible to search by passing `search` query parameter.
-```
-GET api/v1/posts?search[text]=SomeTextToSearch&search[compare][]=title&search[compare][]=description
-
-```
+ ```
+ GET api/v1/posts?search[text]=SomeTextToSearch&search[compare][]=title&search[compare][]=description
+ ```
