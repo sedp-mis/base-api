@@ -812,12 +812,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sedp-mis/lib.git",
-                "reference": "7eae495fb8f97390048f879defa3e5e89e8f69fe"
+                "reference": "c136d8603568160b771df19be34c728fdc4f22aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sedp-mis/lib/zipball/7eae495fb8f97390048f879defa3e5e89e8f69fe",
-                "reference": "7eae495fb8f97390048f879defa3e5e89e8f69fe",
+                "url": "https://api.github.com/repos/sedp-mis/lib/zipball/c136d8603568160b771df19be34c728fdc4f22aa",
+                "reference": "c136d8603568160b771df19be34c728fdc4f22aa",
                 "shasum": ""
             },
             "require": {
@@ -830,7 +830,7 @@
                     "SedpMis\\Lib\\": "src"
                 },
                 "files": [
-                    "src/helpers.php"
+                    "src/helpers/index.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -848,7 +848,7 @@
                 "lib",
                 "library"
             ],
-            "time": "2016-08-01 08:15:20"
+            "time": "2016-08-24 01:14:10"
         },
         {
             "name": "stack/builder",
