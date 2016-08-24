@@ -61,17 +61,12 @@ Notice that `@<method>` are the same with the controller methods in laravel.
  ```
  This example shows that it is currently on the 1st page and showing 100 records per page. 
  Without `page` parameter, the list will default to all resources to be fetched.
-
- You may pass a `wrapper` parameter to wrap the list data within an object with pagination data. Example:
- ```
- GET api/v1/posts?page=1&rows=100&wrapper=jqgrid
- ```
  
 * It is also handy to filter list by its attributes using `filters[attribute][]` parameter. Example:
  ```
  GET api/v1/posts?filters[tag][]=cool&filters[tag][]=trending
  ```
- 
+
 * It is also possible to search by passing `search` query parameter.
 ```
 GET api/v1/posts?search[text]=SomeTextToSearch&search[compare][]=title&search[compare][]=description
