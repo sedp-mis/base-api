@@ -3,6 +3,7 @@
 namespace SedpMis\BaseApi;
 
 use SedpMis\Lib\IlluminateExtensions\Input;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Response;
 
 class BaseApiController extends \Illuminate\Routing\Controller
