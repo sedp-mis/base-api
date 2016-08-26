@@ -15,7 +15,10 @@ class BaseApiController extends \Illuminate\Routing\Controller
 
     public function index()
     {
-        $pagelo = new PageLimitOffset(Input::get('per_page'), Input::get('page'));
+        $pagelo = new PageLimitOffset(
+            Input::get('per_page', Config::get('sedpmis_base_api.per_page', 15)),
+            Input::get('page')
+        );
 
         $this->repo->with(Input::get('relations', []))
             ->attributes(Input::get('attributes', ['*']))
