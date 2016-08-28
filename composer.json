@@ -15,24 +15,10 @@
         "sedp-mis/lib": "dev-master",
         "sedp-mis/base-repository": "dev-master"
     },
-    "require-dev": {
-        "mockery/mockery": "~0.9",
-        "phpunit/phpunit": "~4.0",
-        "fzaninotto/faker": "1.6.*"
-    },
     "autoload": {
         "psr-4": {
             "SedpMis\\BaseApi\\": "src/"
-        },
-        "classmap": [
-            "app/database/migrations",
-            "app/database/seeds"
-        ]
-    },
-    "autoload-dev": {
-        "classmap": [
-            "test_classes/"
-        ]
+        }
     },
     "minimum-stability": "stable"
 }
