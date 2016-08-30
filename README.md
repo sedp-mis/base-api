@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/sedp-mis/base-api.svg?branch=develop)](https://travis-ci.org/sedp-mis/base-api)
 
-Abstraction for api resources in laravel 4.2
+Abstraction for api resources in Laravel. Compatible to use with Laravel `4.2` and `5.*`.
 
 ## Installation
 Clone repository and run `composer install`.
