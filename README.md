@@ -5,7 +5,7 @@
 Abstraction for api resources in Laravel. Compatible to use with Laravel `4.2` and `5.*`.
 
 ## Installation
-Use composer to install deps:
+Use composer to install base-api and dependencies:
 ```
 composer require sedp-mis/lib:dev-master
 composer require sedp-mis/base-repository:dev-master
