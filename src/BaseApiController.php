@@ -2,7 +2,7 @@
 
 namespace SedpMis\BaseApi;
 
-use SedpMis\Lib\IlluminateExtensions\Input;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Response;
 
@@ -28,8 +28,8 @@ class BaseApiController extends \Illuminate\Routing\Controller
             ->limit($pagelo->limit())
             ->offset($pagelo->offset());
 
-        if (Input::has('search') && array_key_exists('text', $search = Input::get('search'))) {
-            return $this->repo->search($search['text'], array_key_exists('compare', $search) ? $search['compare'] : null);
+        if (Input::has('search') && array_key_exists('input', $search = Input::get('search'))) {
+            return $this->repo->search($search['input'], array_key_exists('compare', $search) ? $search['compare'] : null);
         }
 
         return $this->repo->get();
