@@ -50,13 +50,13 @@ Notice that `@<method>` are the same with the controller methods in laravel.
  GET api/v1/posts/1129?relations[]=comments&relations[]=labels
  ```
 
-* Fetched eager loaded relations can also have selective or specific attributes by using query parameter `rels_attrs[<relation>][]`. Example:
+* Fetched eager loaded relations can also have selective or specific attributes. Example:
  ```
- GET api/v1/posts?relations[]=comments&rels_attrs[comments][]=id&rels_attrs[comments][]=text
+ GET api/v1/posts?relations[comments][attributes][]=id&relations[comments][attributes][]=text
  ```
  ... or ...
  ```
- GET api/v1/posts/1129?relations[]=comments&rels_attrs[comments][]=id&rels_attrs[comments][]=text
+ GET api/v1/posts/1129?relations[comments][attributes][]=id&relations[comments][attributes][]=text
  ```
 
 ### `@index`
