@@ -30,35 +30,40 @@ Notice that `@<method>` are the same with the controller methods in laravel.
 ## Advance Implementation for `GET` methods like `@index` and `@show`.
 ### `@index` and `@show`
 
-* Resource can be fetched with selective or specific fields or attributes by using query parameter `attributes[]`. Example:
+* __Selective Attributes__. Resource can be fetched with selective or specific fields or attributes by using query parameter `attributes[]`. Example:
  ```
  GET url?attributes[]=id&attributes[]=title
  ```
  
-* Resource can be fetched with eager loaded relations by using query parameter `relations[]`. Example:
+* __Relations__. Resource can be fetched with eager loaded relations by using query parameter `relations[]`. Example:
  ```
  GET url?relations[]=comments&relations[]=labels
  ```
  
-* Fetched eager loaded relations can also have selective or specific attributes. Example:
+* __Relations Attributes__. Fetched eager loaded relations can also have selective or specific attributes. Example:
  ```
  GET url?relations[comments][attributes][]=id&relations[comments][attributes][]=text
  ```
 
 ### `@index`
-* For list of resources, it is recommended to have it paginated:
+* __Pagination__. For list of resources, it is recommended to have it paginated:
  ```
  GET url?page=1&per_page=100
  ```
  This example shows that it is currently on the 1st page and showing 100 records per page. 
  Without `page` parameter, the list will default to all resources to be fetched.
  
-* It is also handy to filter list by its attributes using `filters[attribute][]` parameter. Example:
+* __Filtering__. It is also handy to filter list by its attributes using `filters[attribute][]` parameter. Example:
  ```
  GET url?filters[tag][]=cool&filters[tag][]=trending
  ```
 
-* It is also possible to search by passing `search` query parameter.
+* __Searching__. It is also possible to search by passing `search` query parameter.
  ```
  GET url?search[input]=SomeTextToSearch&search[compare][]=title&search[compare][]=description
+ ```
+
+* __Sorting__. Sorting can be done by this syntax `sort[attribute_1]=asc&sort[attribute_n]=desc`. Example:
+ ```
+ GET url?sort[title]=asc
  ```
