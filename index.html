@@ -1,44 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-
+    <meta charset="UTF-8">
     <title>sedp-mis/base-api by sedp-mis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
+    <section class="page-header">
+      <h1 class="project-name">sedp-mis/base-api</h1>
+      <h2 class="project-tagline">Abstraction for api resources in laravel 4.2</h2>
+      <a href="https://github.com/sedp-mis/base-api" class="btn">View on GitHub</a>
+      <a href="https://github.com/sedp-mis/base-api/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/sedp-mis/base-api/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <header>
-      <div class="container">
-        <h1>sedp-mis/base-api</h1>
-        <h2>Abstraction for api resources in laravel 4.2</h2>
-
-        <section id="downloads">
-          <a href="https://github.com/sedp-mis/base-api/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/sedp-mis/base-api/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/sedp-mis/base-api" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
-
-    <div class="container">
-      <section id="main_content">
-        <h1>
+    <section class="main-content">
+      <h1>
 <a id="sedpmisbaseapi" class="anchor" href="#sedpmisbaseapi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SedpMis\BaseApi</h1>
 
-<p><a href="https://travis-ci.org/sedp-mis/base-api"><img src="https://travis-ci.org/sedp-mis/base-api.svg?branch=master" alt="Build Status"></a></p>
+<p><a href="https://travis-ci.org/sedp-mis/base-api"><img src="https://travis-ci.org/sedp-mis/base-api.svg?branch=develop" alt="Build Status"></a></p>
 
-<p>Abstraction for api resources in laravel 4.2</p>
+<p>Abstraction for api resources in Laravel. Compatible to use with Laravel <code>4.2</code> and <code>5.*</code>.</p>
 
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
-<p>Clone repository and run <code>composer install</code>.</p>
+<p>Use composer to install base-api and dependencies:</p>
+
+<pre><code>composer require sedp-mis/base-api
+</code></pre>
 
 <h2>
 <a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
@@ -105,34 +99,19 @@ So in the following api implementations, the example resource to be used is <cod
 <li>
 <p>Resource can be fetched with selective or specific fields or attributes by using query parameter <code>attributes[]</code>. Example:</p>
 
-<pre><code>GET api/v1/posts?attributes[]=id&amp;attributes[]=title
-</code></pre>
-
-<p>... or ...</p>
-
-<pre><code>GET api/v1/posts/1129?attributes[]=id&amp;attributes[]=title
+<pre><code>GET url?attributes[]=id&amp;attributes[]=title
 </code></pre>
 </li>
 <li>
 <p>Resource can be fetched with eager loaded relations by using query parameter <code>relations[]</code>. Example:</p>
 
-<pre><code>GET api/v1/posts?relations[]=comments&amp;relations[]=labels
-</code></pre>
-
-<p>... or ...</p>
-
-<pre><code>GET api/v1/posts/1129?relations[]=comments&amp;relations[]=labels
+<pre><code>GET url?relations[]=comments&amp;relations[]=labels
 </code></pre>
 </li>
 <li>
-<p>Fetched eager loaded relations can also have selective or specific attributes by using query parameter <code>rels_attrs[&lt;relation&gt;][]</code>. Example:</p>
+<p>Fetched eager loaded relations can also have selective or specific attributes. Example:</p>
 
-<pre><code>GET api/v1/posts?relations[]=comments&amp;rels_attrs[comments][]=id&amp;rels_attrs[comments][]=text
-</code></pre>
-
-<p>... or ...</p>
-
-<pre><code>GET api/v1/posts/1129?relations[]=comments&amp;rels_attrs[comments][]=id&amp;rels_attrs[comments][]=text
+<pre><code>GET url?relations[comments][attributes][]=id&amp;relations[comments][attributes][]=text
 </code></pre>
 </li>
 </ul>
@@ -141,11 +120,38 @@ So in the following api implementations, the example resource to be used is <cod
 <a id="index" class="anchor" href="#index" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>@index</code>
 </h3>
 
-<p>For list of resources, it is handy to have it paginated:
-<strong>TODO</strong></p>
-      </section>
-    </div>
+<ul>
+<li>
+<p>For list of resources, it is recommended to have it paginated:</p>
 
-    
+<pre><code>GET url?page=1&amp;per_page=100
+</code></pre>
+
+<p>This example shows that it is currently on the 1st page and showing 100 records per page. 
+Without <code>page</code> parameter, the list will default to all resources to be fetched.</p>
+</li>
+<li>
+<p>It is also handy to filter list by its attributes using <code>filters[attribute][]</code> parameter. Example:</p>
+
+<pre><code>GET url?filters[tag][]=cool&amp;filters[tag][]=trending
+</code></pre>
+</li>
+<li>
+<p>It is also possible to search by passing <code>search</code> query parameter.</p>
+
+<pre><code>GET url?search[input]=SomeTextToSearch&amp;search[compare][]=title&amp;search[compare][]=description
+</code></pre>
+</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/sedp-mis/base-api">sedp-mis/base-api</a> is maintained by <a href="https://github.com/sedp-mis">sedp-mis</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
   </body>
 </html>
