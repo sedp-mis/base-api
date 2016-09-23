@@ -97,19 +97,19 @@ So in the following api implementations, the example resource to be used is <cod
 
 <ul>
 <li>
-<p>Resource can be fetched with selective or specific fields or attributes by using query parameter <code>attributes[]</code>. Example:</p>
+<p><strong>Selective Attributes</strong>. Resource can be fetched with selective or specific fields or attributes by using query parameter <code>attributes[]</code>. Example:</p>
 
 <pre><code>GET url?attributes[]=id&amp;attributes[]=title
 </code></pre>
 </li>
 <li>
-<p>Resource can be fetched with eager loaded relations by using query parameter <code>relations[]</code>. Example:</p>
+<p><strong>Relations</strong>. Resource can be fetched with eager loaded relations by using query parameter <code>relations[]</code>. Example:</p>
 
 <pre><code>GET url?relations[]=comments&amp;relations[]=labels
 </code></pre>
 </li>
 <li>
-<p>Fetched eager loaded relations can also have selective or specific attributes. Example:</p>
+<p><strong>Relations Attributes</strong>. Fetched eager loaded relations can also have selective or specific attributes. Example:</p>
 
 <pre><code>GET url?relations[comments][attributes][]=id&amp;relations[comments][attributes][]=text
 </code></pre>
@@ -122,7 +122,7 @@ So in the following api implementations, the example resource to be used is <cod
 
 <ul>
 <li>
-<p>For list of resources, it is recommended to have it paginated:</p>
+<p><strong>Pagination</strong>. For list of resources, it is recommended to have it paginated:</p>
 
 <pre><code>GET url?page=1&amp;per_page=100
 </code></pre>
@@ -131,15 +131,21 @@ So in the following api implementations, the example resource to be used is <cod
 Without <code>page</code> parameter, the list will default to all resources to be fetched.</p>
 </li>
 <li>
-<p>It is also handy to filter list by its attributes using <code>filters[attribute][]</code> parameter. Example:</p>
+<p><strong>Filtering</strong>. It is also handy to filter list by its attributes using <code>filters[attribute][]</code> parameter. Example:</p>
 
 <pre><code>GET url?filters[tag][]=cool&amp;filters[tag][]=trending
 </code></pre>
 </li>
 <li>
-<p>It is also possible to search by passing <code>search</code> query parameter.</p>
+<p><strong>Searching</strong>. It is also possible to search by passing <code>search</code> query parameter.</p>
 
 <pre><code>GET url?search[input]=SomeTextToSearch&amp;search[compare][]=title&amp;search[compare][]=description
+</code></pre>
+</li>
+<li>
+<p><strong>Sorting</strong>. Sorting can be done by this syntax <code>sort[attribute_1]=asc&amp;sort[attribute_n]=desc</code>. Example:</p>
+
+<pre><code>GET url?sort[title]=asc
 </code></pre>
 </li>
 </ul>
