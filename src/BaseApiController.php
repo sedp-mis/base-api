@@ -61,7 +61,7 @@ class BaseApiController extends \Illuminate\Routing\Controller
      */
     public function store()
     {
-        return new Response($this->repo->create(Input::all()), 201);
+        return new Response($this->repo->create(Input::except('_token')), 201);
     }
 
     /**
@@ -73,7 +73,7 @@ class BaseApiController extends \Illuminate\Routing\Controller
      */
     public function update($id)
     {
-        $this->repo->update(Input::all(), $id);
+        $this->repo->update(Input::except('_token'), $id);
         return new Response('', 204);
     }
 
