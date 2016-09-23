@@ -43,10 +43,9 @@ class BaseApiControllerTest extends TestCase
         $this->assertTrue($this->client->getResponse()->isOk());
         $json = json_decode($this->client->getResponse()->getContent(), true);
 
-        //getting the array $json[0] to find for the attribs
-        $attributes = $json[key($json)];
-        $this->assertArrayHasKey('id', $attributes);
-        $this->assertArrayHasKey('title', $attributes);
+        //getting the first element to find for the attribs
+        $attributes = head($json);
+        $this->assertEquals(['id', 'title'], array_keys($attributes));
     }
 
     public function testIndexWithASingleRelations()
