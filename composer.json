@@ -23,15 +23,13 @@
     "autoload": {
         "psr-4": {
             "SedpMis\\BaseApi\\": "src/"
-        },
-        "classmap": [
-            "app/database/migrations",
-            "app/database/seeds"
-        ]
+        }
     },
     "autoload-dev": {
         "classmap": [
-            "test_classes/"
+            "classes/",
+            "app/database/migrations",
+            "app/database/seeds"
         ]
     },
     "minimum-stability": "stable"
