@@ -73,7 +73,7 @@ class BaseApiController extends \Illuminate\Routing\Controller
      */
     public function update($id)
     {
-        $this->repo->update(Input::except('_token'), $id);
+        $this->repo->update($id, Input::except('_token'));
         return new Response('', 204);
     }
 
