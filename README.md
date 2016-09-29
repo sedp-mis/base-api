@@ -1,6 +1,7 @@
 # SedpMis\BaseApi
 
-[![Build Status](https://travis-ci.org/sedp-mis/base-api.svg?branch=develop)](https://travis-ci.org/sedp-mis/base-api)
+[![Build Status](https://travis-ci.org/sedp-mis/base-api.svg?branch=develop)](https://travis-ci.org/sedp-mis/base-api) 
+[![Coverage Status](https://coveralls.io/repos/github/sedp-mis/base-api/badge.svg?branch=master)](https://coveralls.io/github/sedp-mis/base-api?branch=master)
 
 Abstraction for api resources in Laravel. Compatible to use with Laravel `4.2` and `5.*`.
 
