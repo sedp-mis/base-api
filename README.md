@@ -53,10 +53,19 @@ Notice that `@<method>` are the same with the controller methods in laravel.
  This example shows that it is currently on the 1st page and showing 100 records per page. 
  Without `page` parameter, the list will default to all resources to be fetched.
  
-* __Filtering__. It is also handy to filter list by its attributes using `filters[attribute][]` parameter. Example:
- ```
- GET url?filters[tag][]=cool&filters[tag][]=trending
- ```
+* __Filtering__. It is also handy to filter list by its attributes using `filters[attribute][]` parameter.
+ - Default:
+  ```
+  GET url?filters[tag][]=cool&filters[tag][]=trending
+  ```
+ - Using `equals` operator (behaves like the default example):
+  ```
+  GET url?filters[tag][equals][]=cool&filters[tag][equals][]=trending
+  ```
+ - Using `not_equals` operator:
+  ```
+  GET url?filters[tag][not_equals][]=bug&filters[tag][not_equals][]=foo
+  ```
 
 * __Searching__. It is also possible to search by passing `search` query parameter.
  ```
