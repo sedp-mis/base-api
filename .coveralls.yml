@@ -1,4 +1,4 @@
-repo_token: your_token
+repo_token: eBytoOIcRpLE9sZiAN33CpJM2R6D0UaJU
 service_name: travis-ci
 
 # for php-coveralls
