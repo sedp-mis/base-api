@@ -22,17 +22,7 @@ class BaseApiController extends \Illuminate\Routing\Controller
      */
     public function index()
     {
-        $pagelo = new PageLimitOffset(
-            Input::get('per_page', Config::get('sedpmis_base_api.per_page', 15)),
-            Input::get('page')
-        );
-
-        $this->repo->with(Input::get('relations', []))
-            ->attributes(Input::get('attributes', ['*']))
-            ->filters(Input::get('filters', []))
-            ->sort(Input::get('sort', []))
-            ->limit($pagelo->limit())
-            ->offset($pagelo->offset());
+        $this->repo->applyQueryParams(app('request'));
 
         if (Input::has('search') && array_key_exists('input', $search = Input::get('search'))) {
             return $this->repo->search($search['input'], array_key_exists('compare', $search) ? $search['compare'] : null);
