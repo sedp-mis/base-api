@@ -3,15 +3,13 @@
 namespace SedpMis\BaseApi;
 
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Response;
 
 class BaseApiController extends \Illuminate\Routing\Controller
 {
-
     /**
-    * @var \SedpMis\BaseRepository\RepositoryInterface
-    */
+     * @var \SedpMis\BaseRepository\RepositoryInterface
+     */
     protected $repo;
 
     /**
@@ -64,6 +62,7 @@ class BaseApiController extends \Illuminate\Routing\Controller
     public function update($id)
     {
         $this->repo->update($id, Input::except('_token'));
+
         return new Response('', 204);
     }
 
