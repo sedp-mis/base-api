@@ -20,13 +20,7 @@ class BaseApiController extends \Illuminate\Routing\Controller
      */
     public function index()
     {
-        $this->repo->applyQueryParams(app('request'));
-
-        if (Input::has('search') && array_key_exists('input', $search = Input::get('search'))) {
-            return $this->repo->search($search['input'], array_key_exists('compare', $search) ? $search['compare'] : null);
-        }
-
-        return $this->repo->get();
+        return $this->repo->applyQueryParams(app('request'))->get();
     }
 
     /**
